@@ -57,7 +57,7 @@ const Marketplace = () => {
     }
   };
 
-  const filteredItems = items.filter(item => {
+  const filteredItems = Array.isArray(items) ? items.filter(item => {
       const title = item.title || ""; 
       const desc = item.description || "";
       
@@ -67,7 +67,7 @@ const Marketplace = () => {
       const matchesCategory = filterCategory === 'All' || item.category === filterCategory;
       
       return matchesSearch && matchesCategory;
-  });
+  }) : [];
 
   const categories = ['All', 'Furniture', 'Fashion', 'Art', 'Tech', 'Home'];
 
